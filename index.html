@@ -169,7 +169,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:36px 0 48px}
       <span class="tag">01 · Pipeline AI</span>
       <h3>Pipeline sản xuất phim AI trên DramaClaw</h3>
       <p class="problem">Làm phim AI theo kiểu thủ công thường gặp hai vấn đề: nhân vật đổi mặt giữa các cảnh, và phải viết lại prompt cho từng shot. Tôi thiết kế một workflow để kịch bản đi qua từng bước một cách tự động.</p>
-      <div class="stat"><div><b>≥60%</b><span>thời gian hoàn thành video được rút ngắn</span></div><div><b>6</b><span>giai đoạn từ kịch bản đến bản dựng</span></div></div>
+      <div class="stat"><div><b>6</b><span>giai đoạn từ kịch bản đến bản dựng</span></div></div>
       <ul>
         <li><b>Phân tích kịch bản:</b> AI tách kịch bản thành hồ sơ nhân vật, bối cảnh, ánh sáng và đạo cụ, viết bằng tiếng Anh chuẩn để dùng làm prompt.</li>
         <li><b>Ảnh neo (anchor):</b> tạo ảnh tham chiếu nhân vật, bối cảnh, đạo cụ bằng ComfyUI để giữ hình ảnh nhất quán ở mọi cảnh.</li>
@@ -195,6 +195,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:36px 0 48px}
       <span class="tag">02 · Extension Premiere Pro</span>
       <h3>Bộ extension tự động hóa Premiere Pro</h3>
       <p class="problem">Cắt voice theo từng câu kịch bản và thay hàng trăm footage là những việc lặp đi lặp lại hằng ngày trong nghề dựng. Tôi làm các panel chạy ngay trong Premiere để tự động hóa các việc này.</p>
+      <div class="stat"><div><b>≥60%</b><span>thời gian dựng video được rút ngắn</span></div><div><b>4</b><span>panel chạy ngay trong Premiere</span></div></div>
       <ul>
         <li><b>Voice Cutter:</b> nhận một file voice đọc liền và kịch bản chia câu (dán tay hoặc CSV từ Google Sheet). Model <b>Whisper</b> nhận diện giọng đọc, khớp từng câu với đúng đoạn thời gian, cắt bỏ khoảng lặng, rồi tạo sẵn subclip cho từng câu.</li>
         <li><b>Footage Replacer:</b> relink hàng loạt clip trong một bin sang file trong thư mục mới, ghép theo thứ tự A→Z/Z→A hoặc theo tên trùng (không phân biệt hoa thường, khác đuôi file vẫn khớp).</li>
