@@ -70,8 +70,8 @@ nav ul a:hover,nav ul a.on{color:var(--mint);background:rgba(0,247,169,.08)}
 @keyframes bob{50%{transform:translateY(6px)}}
 /* ticker -> dải chạy ngang */
 .ticker{position:relative;margin-top:30px;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.tk{display:flex;gap:12px;width:max-content;animation:mq 38s linear infinite}
-.tk span{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;border:1px solid rgba(0,247,169,.45);background:rgba(0,247,169,.06);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);white-space:nowrap}
+.tk{display:flex;width:max-content;animation:mq 38s linear infinite}
+.tk span{display:inline-flex;align-items:center;gap:8px;margin-right:12px;padding:8px 16px;border-radius:999px;border:1px solid rgba(0,247,169,.45);background:rgba(0,247,169,.06);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);white-space:nowrap}
 .tk span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--mint);box-shadow:0 0 8px var(--mint)}
 @keyframes mq{to{transform:translateX(-50%)}}
 
@@ -215,7 +215,6 @@ section{position:relative;padding:clamp(90px,12vw,160px) 0}
   </div>
   <div class="ticker"><div class="tk">
     <span>Whisper</span><span>Real-ESRGAN</span><span>ComfyUI</span><span>Wan2.2</span><span>AI Agent</span><span>Premiere CEP</span><span>Flutter</span><span>Supabase</span>
-    <span aria-hidden="true">Whisper</span><span aria-hidden="true">Real-ESRGAN</span><span aria-hidden="true">ComfyUI</span><span aria-hidden="true">Wan2.2</span><span aria-hidden="true">AI Agent</span><span aria-hidden="true">Premiere CEP</span><span aria-hidden="true">Flutter</span><span aria-hidden="true">Supabase</span>
   </div></div>
 </div></header>
 
@@ -380,6 +379,12 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');i
 const links=$$('nav ul a');
 new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id))}),{rootMargin:'-45% 0px -50% 0px'}).observe($('#cach-lam'));
 ['#du-an','#lien-he'].forEach(s=>{new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')===s))}),{rootMargin:'-45% 0px -50% 0px'}).observe($(s))});
+/* dải chạy: lặp danh sách tới khi nửa dải dài hơn màn hình, rồi nhân đôi để dịch -50% không bị hở (bản lặp ẩn với trình đọc màn hình) */
+const tk=$('.tk'),tkSrc=tk.innerHTML;
+function fillTk(){tk.innerHTML=tkSrc;const one=tk.scrollWidth||1,n=Math.max(1,Math.ceil(innerWidth*1.15/one));
+ const copy=tkSrc.replace(/<span>/g,'<span aria-hidden="true">');tk.innerHTML=tkSrc+copy.repeat(2*n-1);tk.style.animationDuration=(one*n/45).toFixed(1)+'s'}
+fillTk();let tkW=innerWidth;addEventListener('resize',()=>{if(Math.abs(innerWidth-tkW)>40){tkW=innerWidth;fillTk()}});
+document.fonts&&document.fonts.ready.then(fillTk);
 const rv=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('vis');rv.unobserve(en.target)}}),{threshold:.1});
 $$('.reveal').forEach(e=>rv.observe(e));
 </script>
