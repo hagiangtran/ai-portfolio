@@ -132,6 +132,25 @@ section{position:relative;padding:clamp(90px,12vw,160px) 0}
 .ext img{width:100%;height:320px;object-fit:cover;object-position:top;border-radius:10px}
 .ext figcaption{color:rgba(255,255,255,.65);font-size:12px;margin-top:8px}
 
+/* còn nhiều sản phẩm AI khác */
+.more{position:relative;margin-top:8px;padding:clamp(28px,4vw,48px);border-radius:32px;background:var(--deep);color:#fff;overflow:hidden}
+.more::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 300px at 85% 10%,rgba(0,247,169,.2),transparent 70%),linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px) 0 0/48px 48px;pointer-events:none}
+.more>*{position:relative}
+.more .mh{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:end;margin-bottom:30px}
+.more h3{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(34px,4.6vw,60px);letter-spacing:-.04em;line-height:1}
+.more .mh p{color:rgba(255,255,255,.78)}
+.kinds{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.kind{padding:20px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(0,247,169,.22);transition:border-color .3s,transform .4s var(--ease)}
+.kind:hover{border-color:var(--mint);transform:translateY(-4px)}
+.kind b{display:block;font-family:'Bricolage Grotesque';font-size:15px;color:var(--mint);letter-spacing:.04em}
+.kind h4{font-family:'Bricolage Grotesque';font-size:20px;letter-spacing:-.02em;line-height:1.15;margin:10px 0 6px}
+.kind p{font-size:14px;color:rgba(255,255,255,.7)}
+.more .btns{margin-top:28px}
+@media (max-width:900px){.more .mh{grid-template-columns:1fr;gap:12px}.kinds{grid-template-columns:1fr 1fr}}
+.more .amp{color:var(--mint)}
+@media (max-width:600px){.kinds{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -28px;padding:2px 28px 10px;gap:10px}
+ .kinds::-webkit-scrollbar{display:none}.kind{flex:0 0 78%;scroll-snap-align:start;padding:16px}.kind:hover{transform:none}}
+
 /* ===== 4. màn kết: cửa sổ mở ra "đại dương phát quang" ===== */
 .finale{position:relative;height:330vh;padding:0}
 .fin-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;color:#fff}
@@ -147,7 +166,7 @@ section{position:relative;padding:clamp(90px,12vw,160px) 0}
 .fin-ui .btns{justify-content:center}
 .fin-ui .btn.ghost{background:rgba(255,255,255,.92)}
 .fin-foot{width:100%;max-width:var(--max);margin-top:clamp(34px,7vh,70px);padding-top:16px;border-top:1px solid rgba(255,255,255,.2);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.7)}
-.fin-foot nav{position:static;padding:0;display:flex;gap:18px;flex-wrap:wrap}
+.fin-foot nav{position:static;padding:0;display:flex;gap:18px;flex-wrap:wrap;background:none;border:0}
 .fin-foot nav a{text-decoration:none;color:rgba(255,255,255,.85)}
 .fin-foot nav a:hover{color:var(--mint)}
 
@@ -156,7 +175,12 @@ section{position:relative;padding:clamp(90px,12vw,160px) 0}
  .ext{grid-template-columns:1fr 1fr}.ext img{height:260px}
 }
 @media (max-width:900px){
- nav ul{display:none}
+ body>nav{padding:0;background:rgba(11,13,12,.94);border-bottom:1px solid rgba(255,255,255,.08)}
+ body>nav .wrap{height:54px;padding:0 10px}
+ body>nav .logo{height:auto;padding:0 6px;background:none;border:0;font-size:18px;backdrop-filter:none;-webkit-backdrop-filter:none}
+ body>nav ul{padding:0;gap:0;background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none}
+ body>nav ul a{padding:7px 10px;font-size:13px}
+ .wide .media img.wf{width:900px}
  .hgrid{grid-template-columns:1fr;gap:18px}
  .pcard{justify-self:start;flex-direction:row;width:100%;padding:12px 18px 12px 12px;border-radius:22px}
  .portrait{width:84px;flex:none}
@@ -319,6 +343,24 @@ section{position:relative;padding:clamp(90px,12vw,160px) 0}
       <a class="dl" href="https://drive.google.com/uc?export=download&id=1dYZUSxMsSl4F85BKOyCeQEDk8x5nAr-P" target="_blank" rel="noopener">Tải dự án về ↓ <small>ZIP · 11.6 MB</small></a>
     </div>
   </article>
+  <aside class="more reveal" aria-labelledby="more-h">
+    <div class="mh">
+      <h3 id="more-h">Còn nhiều <span class="amp">&amp;</span> hơn thế</h3>
+      <p>Bốn dự án ở trên chỉ là phần tiêu biểu. Tôi còn nhiều script, workflow và công cụ AI khác dùng hằng ngày trong công việc nhưng chưa đưa hết lên đây. Tôi sẵn sàng demo trực tiếp khi chúng ta trao đổi.</p>
+    </div>
+    <div class="kinds">
+      <div class="kind"><b>01</b><h4>Script tự động hóa AE/PR</h4><p>Script JavaScript/ExtendScript xử lý các thao tác lặp lại trong After Effects và Premiere.</p></div>
+      <div class="kind"><b>02</b><h4>Extension &amp; tiện ích CEP</h4><p>Các panel nhỏ chạy ngay trong phần mềm dựng, làm đúng một việc cụ thể.</p></div>
+      <div class="kind"><b>03</b><h4>Workflow tạo ảnh ComfyUI</h4><p>Workflow tạo và chỉnh ảnh, giữ nhân vật và phong cách nhất quán.</p></div>
+      <div class="kind"><b>04</b><h4>Video &amp; voice bằng AI</h4><p>Sinh video, lồng tiếng TTS và nhạc nền cho các dự án nội dung.</p></div>
+      <div class="kind"><b>05</b><h4>AI Agent điều phối việc</h4><p>Dùng AI Agent để chạy và sửa từng bước của quy trình bằng hội thoại.</p></div>
+      <div class="kind"><b>06</b><h4>App &amp; tool nhỏ bằng Python</h4><p>Công cụ chạy trên máy cho xử lý ảnh, video và dữ liệu hằng ngày.</p></div>
+    </div>
+    <div class="btns">
+      <a class="btn mint" href="#lien-he">Liên hệ để xem demo →</a>
+      <a class="btn ghost" href="https://drive.google.com/drive/folders/11YOthEG68v0ls2G2sfXRTH-PZuOfLGqi" target="_blank" rel="noopener">Thư mục mã nguồn ↗</a>
+    </div>
+  </aside>
 </div></section>
 
 <!-- 4. MÀN KẾT: cửa sổ mở ra "đại dương phát quang" xanh lục sâu, rồi hiện phần liên hệ -->
